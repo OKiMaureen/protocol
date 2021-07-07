@@ -15,10 +15,13 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          profile: minimal
+          toolchain: nightly
+          override: true
+          target: wasm32-unknown-unknown
       - uses: actions-rs/cargo@v1
         with:
-          command: build
+         command: check
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} events."
       - run: echo "hello ${{ toJson(github) }}"
       - run: echo "🎉 The job was automatically triggered by event ${{ github.event.push.push_id}} events."
